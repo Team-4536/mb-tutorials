@@ -18,11 +18,11 @@ If this is your first time, start here:
 
 ![alt text](image-3.png)
 
-4. In Windows C:, create a new folder by pressing the new folder button and name it yourNameRepos
+4. In Windows C:, create a new folder by pressing the new folder button and name it yourNameRepos (no spaces, no punctuation).
 
 ![alt text](image-4.png)
 
-5. Double click the folder you just made to go inside it. After that create another folder within that one called yourNameTutorials (no spaces, no punctuation).
+5. Double click the folder you just made to go inside it. After that create another folder within that one called yourNameTutorials.
 
 6. click once on the yourName-tutorials file so it is highlighted and then press the "select as repository destination" button
 
