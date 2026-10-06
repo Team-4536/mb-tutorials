@@ -22,7 +22,7 @@ If this is your first time, start here:
 
 ![alt text](image-4.png)
 
-5. Double click the folder you just made to go inside it. After that create another folder within that one called yourNameTutorials.
+5. Double click the folder you just made to go inside it. After that create another folder within that one called yourNameTutorials (no spaces, no punctuation).
 
 6. click once on the yourName-tutorials file so it is highlighted and then press the "select as repository destination" button
 
