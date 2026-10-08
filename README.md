@@ -3,7 +3,7 @@
 If this is your first time, start here:
 
 1. Click the green button that says code and then copy the link that says HTTPS
-![alt text](image.png)
+![alt text](images/image.png)
 1. Go to VS Code. Open a new window in VS Code and then press the blue button that says "clone repository"
 ![alt text](image-1.png)
 1. Paste the link that you copied into the top bar that will pop up and then press enter
