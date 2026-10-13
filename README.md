@@ -10,11 +10,12 @@ If this is your first time, start here:
 ![alt text](images/image-2.png)
 1. A window to select a file will pop up. Double click on the tab that says Windows C:
 ![alt text](images/image-3.png)
-1. In Windows C:, create a new folder by pressing the new folder button and name it yourNameRepos (no spaces, no punctuation).
+1. In Windows C:, find the folder named "repos"
+![alt text](images/image-9.png)
+1. If there ISN'T one, create it by making a new folder by pressing the new folder button and name it "repos" (no spaces, no punctuation).
 ![alt text](images/image-4.png)
-1. Double click the folder you just made to go inside it. After that create another folder within that one called yourNameTutorials.
-1. Click once on the yourName-tutorials file so it is highlighted and then press the "select as repository destination" button
-![alt text](images/image-5.png)
+1. Click once on the repos folder so it is highlighted and then press the "select as repository destination" button
+![alt text](images/image-10.png)
 1. click the sidebar button in VS Code that looks like a tree
 ![alt text](images/image-6.png)
 1. now you should be in source control. Press the three white dots in the corner, hover your mouse over the option that says branch, then select "Create Branch..."
