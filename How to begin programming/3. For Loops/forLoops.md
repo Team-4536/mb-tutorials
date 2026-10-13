@@ -21,7 +21,7 @@ For Loop Syntax:
 
 ```py
 for i in range(10):
-print("Hello World")
+	print("Hello World")
 ```
 
 This particular for loop would repeat `10` times (the number in the `“range()”` function) but there is something even more useful about a for loop and that the little `“i”` variable. 
@@ -30,7 +30,7 @@ This is commonly named the “index” or "iterator" hence why it’s an `“i�
 
 ```py
 for i in range(10):
-print(i)
+	print(i)
 ```
 
 In this basic format, `“i”` will start at zero and increase by 1 until it reaches `10`. You may notice if you run this code that 10 is actually never printed and the reason for this is because every time our loop goes back up to the top, it checks if `“i”` is less than `10` and then decides to run the code again or not. In our case, when `“i”` is equal to 9 and it reaches the end of the code, it will increase by 1 to 10\. Then, the loop will evaluate if 10 is less than `10`, and since it isn’t the loop will stop, or “break,” and the rest of the program will continue on.
@@ -39,7 +39,7 @@ There are also other forms of the `“range()”` function we can use.
 
 ```py
 for i in range(1, 10):
-pass
+	pass
 ```
 
 This is the `range(start, stop)` structure. Start is what `“i”` will start at.
@@ -69,9 +69,9 @@ Here’s a fun little program that utilizes a for loop to sing a very repetitive
 
 ```py
 for i in range(99, 0, -1):
-    print(i, "bottles of beer on the wall")
-  print(i, "bottles of beer")
-  print("take 1 down, pass it around,")
+	print(i, "bottles of beer on the wall")
+	print(i, "bottles of beer")
+	print("take 1 down, pass it around,")
     print(i-1, "bottles of beer on the wall.")
 
 ```
