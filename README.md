@@ -4,11 +4,11 @@ If this is your first time, start here:
 
 1. Click the green button that says code and then copy the link that says HTTPS
 ![alt text](images/image.png)
-1. Go to VS Code. Open a new window in VS Code and then press the blue button that says "clone repository"
+1. Go to VS Code. Open a new window (File --> New Window) in VS Code and then press the blue button that says "clone repository"
 ![alt text](images/image-1.png)
 1. Paste the link that you copied into the top bar that will pop up and then press enter
 ![alt text](images/image-2.png)
-1. A window to select a file will pop up. Double click on the tab that says Windows C:
+1. A window to select a file will pop up. Double click on the tab that says Windows C: (if you don't see "C:" open "This PC" first.)
 ![alt text](images/image-3.png)
 1. In Windows C:, create a new folder by pressing the new folder button and name it yourNameRepos (no spaces, no punctuation).
 ![alt text](images/image-4.png)
