@@ -24,7 +24,7 @@ We use variables frequently in python and write them using the following syntax:
 
 For example:
 
-_numberOfRoations: int = 1_
+`numberOfRotations: int = 1`
 
 * `numberOfRotations` is the word used to represent the variable
 * `int` is the type of data that is stored in the variable
