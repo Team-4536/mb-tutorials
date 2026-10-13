@@ -8,7 +8,9 @@ An if statement is a piece of code designed to check if a specific thing is true
 
 Code Example:
 
-| adrianChristianHernandez \= 10if (adrianChristianHernandez \== 10):   print(True) |
+| adrianChristianHernandez \= 10
+    if (adrianChristianHernandez \== 10): 
+      print(True) |
 | :---- |
 
 Comparison Operators:  
