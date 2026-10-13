@@ -6,76 +6,177 @@ An if statement is a piece of code designed to check if a specific thing is true
 
 ![][image1]
 
-Code Example:
+**Code Example:**
 
-| adrianChristianHernandez \= 10if (adrianChristianHernandez \== 10):   print(True) |
-| :---- |
+adrianChristianHernandez \= 10
 
-Comparison Operators:  
+if (adrianChristianHernandez \== 10):  
+print(True)
+
+
+**Comparison Operators:**  
 A Comparison Operator is a way to compare two values, these are the ones you will see in python:
 
-| \== \#Returns true if they are both equal\!= \#Returns true if they aren't equal\> \#Returns true if the left value is greater than the right value\< \#Returns true if the left value is less than the right value\>= \#Returns true if the left value is greater than or equal to the right value\<= \#Returns true if the left value is less than or equal to the right value |
-| :---- |
+== Returns true if they are both equal
+!= Returns true if they aren't equal 
 
-Logical Operators:  
+\> Returns true if the left value is greater than the right value"
+
+< Returns true if the left value is less than the right value
+
+\>= Returns true if the left value is greater than or equal to the right value
+
+\<= Returns true if the left value is less than or equal to the right value
+
+**Logical Operators:**
 A Logical Operator is a way to combine or make more complex conditional statements (if statements)
 
-| and \#Returns true if both conditionals are trueor \#Returns true if at least one of the conditionals are truenot \#Returns true if the conditional is false |
-| :---- |
+*and* Returns true if both conditionals are true
 
-Example of using both Comparison and Logical Operators:
+*or* Returns true if at least one of the conditionals are true
 
-| x \= 13y \= 7if (x \== 13 or y \<= 8):   print("a")if (x \> 15 and y \== 7):   print("b")if (x \> 10 and not y \> 10):   print("c") |
-| :---- |
+*not* Returns true if the conditional is false
 
-Output:
+**Example of using both Comparison and Logical Operators:**
+```python
+x = 13
+y = 7
 
-| ac |
-| :---- |
+if (x == 13 or y <= 8):     
+   print("a")
+if (x > 15 and y == 7):
+   print("b")
+if (x > 10 and not y > 10):
+   print("c")
+```
+**Output:**
 
-If-else statements:  
+a  
+c  
+
+
+**If-else statements:**  
 An if-else statement is a statement that runs two different pieces of code: one that runs when the if statement is correct, and one that runs when the if statement isn’t correct. The example statement prints whether the amount you’re spending is above the budget.
 
-| budget \= 30itemCost \= 10if (itemCost \< budget):   print("You can afford ts")else:   print("Get outta my store brokie") |
-| :---- |
+```python
+budget = 30
+itemCost = 10
 
+if (itemCost < budget):
+   print("You can afford ts")
+else:
+   print("Get outta my store brokie")
+```
+
+```python
 Output: You can afford ts
+```
+```python
+budget = 30
+itemCost = 36
 
-| budget \= 30itemCost \= 36if (itemCost \< budget):   print("You can afford ts")else:   print("Get outta my store brokie") |
-| :---- |
-
+if (itemCost < budget):
+   print("You can afford ts")
+else:
+   print("Get outta my store brokie")
+```
+```python
 Output: Get outta my store brokie
+```
 
-If-elif statements  
+**If-elif statements:**  
 An if-elif statement is very similar to an if-else statement, but instead of else always running when if is false, the else also checks if something is true before running.
+```python
+budget = 30
+itemCost = 30
 
-| budget \= 30itemCost \= 30if (itemCost \< budget):   print("You can afford ts")\#elif is short for else ifelif(itemCost \== budget):   print("Spending all your money on \<item\> is interesting")else:   print("Get outta my store brokie") |
-| :---- |
-
-Output: Spending all your money on \<item\> is interesting
-
+if (itemCost < budget):
+   print("You can afford ts")
+#elif is short for else if
+elif(itemCost == budget):
+   print("Spending all your money on <item> is interesting")
+else:
+   print("Get outta my store brokie")
+```
+```pytho
+Output: Spending all your money on item is interesting
+```
 You can also make chains of elif statements
+```python
+time = 6
 
-| time \= 6if (time \< 6 and time \> 0):   print("You should be asleep rn")elif (time \< 12):   print("It is the morning")elif (time \== 12):   print("It is noon")elif (time \< 18):   print("It is the afternoon")elif (time \== 18):   print("It is dinner time")elif (time \< 21):   print("It is the evening")elif (time \<= 22):   print("It is night")elif (time \<= 24):   print("You should be asleep rn")else:   print("Your code is bugging twin") |
-| :---- |
-
+if (time < 6 and time > 0):
+   print("You should be asleep rn")
+elif (time < 12):
+   print("It is the morning")
+elif (time == 12):
+   print("It is noon")
+elif (time < 18):
+   print("It is the afternoon")
+elif (time == 18):
+   print("It is dinner time")
+elif (time < 21):
+   print("It is the evening")
+elif (time <= 22):
+   print("It is night")
+elif (time <= 24):
+   print("You should be asleep rn")
+else:
+   print("Your code is bugging twin")
+```
+```
 Output: It is the morning
-
-Match-Case Statements  
+```
+**Match-Case Statements**  
 A match-case statement is essentially a chain of elif statements, but it looks more professional. The main difference is instead of an else statement, there’s case \_. Here is an example of a match-case statement doing the exact same thing as the elif statements above
+```python
+time = 6
 
-| time \= 6match time:   case 1 | 2 | 3 | 4 | 5 | 23 | 24:       print("You should be asleep rn")   case 6 | 7 | 8 | 9 | 10 | 11:       print("It is the morning")   case 12:       print("It is noon")   case 13 | 14 | 15 | 16 | 17:       print("It is the afternoon")   case 18:       print("It is dinner time")   case 19 | 20:       print("It is the evening")   case 21 | 22:       print("It is night")   case \_:       print("Your code is bugging twin") |
-| :---- |
-
+match time:
+   case 1 | 2 | 3 | 4 | 5 | 23 | 24:
+       print("You should be asleep rn")
+   case 6 | 7 | 8 | 9 | 10 | 11:
+       print("It is the morning")
+   case 12:
+       print("It is noon")
+   case 13 | 14 | 15 | 16 | 17:
+       print("It is the afternoon")
+   case 18:
+       print("It is dinner time")
+   case 19 | 20:
+       print("It is the evening")
+   case 21 | 22:
+       print("It is night")
+   case _:
+       print("Your code is bugging twin")
+```
+```
 Output: It is the morning
-
+```
 Another thing you can do is have the case check if something else is true as well:
+```python
+x = 3
+y = 14
+z = 5
 
-| x \= 3y \= 14z \= 5match x:   case 1 if y \< 10:       print("a")   case 1 if z \< 10:       print("b")   case 3 if z \> 15:       print("c")   case 3 if y \< 20:       print("d")   case 3 if z \== 5:       print("e")   case \_:       print("f") |
-| :---- |
-
+match x:
+   case 1 if y < 10:
+       print("a")
+   case 1 if z < 10:
+       print("b")
+   case 3 if z > 15:
+       print("c")
+   case 3 if y < 20:
+       print("d")
+   case 3 if z == 5:
+       print("e")
+   case _:
+       print("f")
+```
+```
 Output: d  
-Challenge:  
+```
+**Challenge:**  
 Make a guess the number game using input from the console and the random module
 
 [https\://www\.geeksforgeeks.org/python/python-match-case-statement/](https://www.geeksforgeeks.org/python/python-match-case-statement/)  
