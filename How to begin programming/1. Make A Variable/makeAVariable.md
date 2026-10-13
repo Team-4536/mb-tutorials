@@ -6,7 +6,7 @@ Learn what a variable is as well as how to create one in python
 
 ---
 
-**Variable:** A variable is a letter, symbol, or word that represents something else
+**Variable:** A variable is a name that refers to a value or object in a program.
 
 **Common Variable Types:**
 
