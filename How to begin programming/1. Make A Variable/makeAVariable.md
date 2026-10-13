@@ -30,7 +30,7 @@ For example:
 * `int` is the type of data that is stored in the variable
 * `1` is the integer value assigned to the variable
 
-_foodType: str = “Fruit”_
+`foodType: str = "Fruit"`
 
 * `foodType` is the word used to represent the variable
 * `str` is the type of data that is stored in the variable
