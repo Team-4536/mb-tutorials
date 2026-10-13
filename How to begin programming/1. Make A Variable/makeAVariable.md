@@ -18,9 +18,11 @@ Learn what a variable is as well as how to create one in python
 
 ---
 
-We use variables frequently in python and write them using the following syntax:
+We use variables frequently in Python and assign values using this syntax (a type annotation is optional):
 
-[letter, symbol, or word]: [type] = value
+`variable_name = value`
+
+`variable_name: type = value`
 
 For example:
 
