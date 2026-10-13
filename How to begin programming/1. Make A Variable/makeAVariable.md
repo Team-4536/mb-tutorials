@@ -38,9 +38,9 @@ _foodType: str = “Fruit”_
 
 _isOn: bool = True_
 
-* `foodType` is the word used to represent the variable
-* `str` is the type of data that is stored in the variable
-* `Fruit` is the text(aka string) value assigned to the variable
+* `isOn` is the name used to represent the variable
+* `bool` is the type of data that is stored in the variable
+* `True` is the boolean value assigned to the variable
 
 ---
 
