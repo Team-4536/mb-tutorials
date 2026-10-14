@@ -27,15 +27,15 @@ In this tutorial you will learn how to create and run your first Python program 
       py ......
       ```
 
-      Please talk to a experienced programming team member.
+      Please talk to an experienced programming team member.
 
-1. Run `MyHelloWorld.md`
+1. Run `MyHelloWorld.py`
    1. Change directory (`cd`) to make sure you are in the `00_HelloWorld` directory of the tutorials (`mb-tutorials\How to begin programming\00_HelloWorld\`)
       1. Assuming you start in the 'mb-tutorials' root folder, type: `cd '.\How to begin programming\00_HelloWorld\'` to change into the correct directory for running the program
       2. Type "py MyHelloWorld.py" into your terminal.  It should look something like this:
 
           ```bash
-          $ py MyHelloWorld.py 
+          $ py MyHelloWorld.py
           Hello, New Programmer! Welcome to the MinuteBots!
           ```
 
