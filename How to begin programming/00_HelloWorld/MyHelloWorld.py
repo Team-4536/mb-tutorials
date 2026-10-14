@@ -1,0 +1,1 @@
+print("Hello, New Programmer! Welcome to the MinuteBots!")
