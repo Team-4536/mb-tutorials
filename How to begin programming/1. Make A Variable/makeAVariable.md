@@ -1,6 +1,6 @@
 # MAKE A VARIABLE
 
-## Goal
+## Activity
 
 Learn what a variable is as well as how to create one in python
 
@@ -10,11 +10,11 @@ Learn what a variable is as well as how to create one in python
 
 **Common Variable Types:**
 
-	Integers (int): represents any whole number
+  Integers (int): represents any whole number
 
-	Strings (str): represents any string of words
+  Strings (str): represents any string of words
 
-	Booleans (bool): represents a true/false statement
+  Booleans (bool): represents a true/false statement
 
 ---
 
@@ -38,7 +38,7 @@ For example:
 * `str` is the type of data that is stored in the variable
 * `Fruit` is the text(aka string) value assigned to the variable
 
-_isOn: bool = True_
+`isOn: bool = True`
 
 * `isOn` is the name used to represent the variable
 * `bool` is the type of data that is stored in the variable
@@ -49,9 +49,10 @@ _isOn: bool = True_
 Python variable names may contain letters, digits, and underscores, but they cannot begin with a digit or be a Python keyword. For names with multiple words, Python convention uses snake_case (for example, `number_of_rotations`); camelCase is valid but is not the conventional style.
 
 ---
-# Test your knowledge
-## Goal
 
+## Test your knowledge
+
+### Goal
 
 Create 5 variables with the following names that store integers and initialize them:
 
