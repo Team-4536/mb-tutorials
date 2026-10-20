@@ -8,10 +8,8 @@ An if statement is a piece of code designed to check if a specific thing is true
 
 **Code Example:**
 
-| adrianChristianHernandez \= 10
-    if (adrianChristianHernandez \== 10): 
-      print(True) |
-| :---- |
+adrianChristianHernandez \= 10
+
 
 if (adrianChristianHernandez \== 10):  
 print(True)
@@ -20,7 +18,7 @@ print(True)
 **Comparison Operators:**  
 A Comparison Operator is a way to compare two values, these are the ones you will see in python:
 
-== Returns true if they are both equal
+== Returns true if they are both equal  
 != Returns true if they aren't equal 
 
 \> Returns true if the left value is greater than the right value"
@@ -131,7 +129,8 @@ else:
 Output: It is the morning
 ```
 **Match-Case Statements**  
-A match-case statement is essentially a chain of elif statements, but it looks more professional. The main difference is instead of an else statement, there’s case \_. Here is an example of a match-case statement doing the exact same thing as the elif statements above
+
+A match-case statement is essentially a chain of elif statements, but it looks more professional. The main difference is instead of an else statement, there’s case. Here is an example of a match-case statement doing the exact same thing as the elif statements above
 ```python
 time = 6
 
