@@ -44,5 +44,6 @@ In this tutorial you will learn how to create and run your first Python program 
 1. Open MyHelloWorld.py (`mb-tutorials\How to begin programming\00_HelloWorld\MyHelloWorld.py`), review the file and see if you have some ideas about how it might work.
 1. Replace `New Programmer` with your name.
 1. Add some addtional text that is your own. Try adding an additional line.
+1. A comment is a line in code that python ignores. Comments are therefore only for human convenience. You can make a comment by putting this symbol # in front of the line you want to comment.
 
 Demonstrate the results to a mentor, captain or the team.
