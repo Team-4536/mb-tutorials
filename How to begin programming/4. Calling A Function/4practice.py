@@ -1,2 +1,12 @@
-# Before editing this file, make sure that you are in a branch labled as yourName-practice-2026
-# If you are not sure you are in that branch ask for help!
+# calling a function practice 
+
+my_name = "Dex"
+print()
+print("this program is made by", my_name)
+print()
+your_name = input("what is your name? ")
+print()
+print("nice to meet you,", your_name)
+print()
+
+

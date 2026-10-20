@@ -1,4 +1,18 @@
-# Before editing this file, make sure that you are in a branch labled as yourName-practice-2026
-# If you are not sure you are in that branch ask for help!
+# integer varibles
+numFruits = 1
+speed = 2
+family_members = 3
+num_fish = 4
+velocity = 5
 
-# *If this is your first time, you may need to make this branch*
+# string variables 
+myString = "string"
+fruit_type = "apple"
+fishType = "stinky"
+name = "Dex"
+englishGrade = "A+"
+
+# boolean variables 
+isOn = True 
+is_spinning = False 
+isRed = True 
