@@ -1,48 +1,41 @@
 # Hello World MinuteBots Style
+In this tutorial you will learn how to create and run your first Python program.
 
-In this tutorial you will learn how to create and run your first Python program in VSCode
+## Open a Terminal 
+1. Open a new Terminal Window using Terminal --> New Terminal 
 
-## Running your first program
+NOTE: the short cut next to it! **CTRL-SHIFT-`**
 
-1. Open a VSCode Terminal
-   1. Open a new Terminal Window using the Terminal menu and selecting 'New Terminal'
-  
-      *NOTE: Keyboard Shortcut: CTRL-SHIFT-`*
+This terminal is where you will enter all the commands to run Python programs (including the Robot Code itself!)
 
-      This terminal is where you will enter all the commands to run Python programs (***including the Robot Code itself!***)
 
-1. Check that Python is installed correctly.
-   1. Type "py --version" into the new terminal.
+## Check that Python is installed correctly.
+1. Type "py --version" into the new terminal. 
 
-      It should look something like (but your version number may be higher):
+It should look something like this:
+```
+$ py --version
+Python 3.14.7
+```
+(Your version number may be higher, that's probably ok!):
 
-      ```bash
-      $ py --version
-      Python 3.14.7
-      ```
+If it shows something like this:
+```
+py : The term 'py' is not recognized...
+```
+Please talk to a experienced programming team member.
 
-      **If this shows something like**
-
-      ```bash
-      py ......
-      ```
-
-      Please talk to an experienced programming team member.
-
-1. Run `MyHelloWorld.py`
-   1. Change directory (`cd`) to make sure you are in the `00_HelloWorld` directory of the tutorials (`mb-tutorials\How to begin programming\00_HelloWorld\`)
-      1. Assuming you start in the 'mb-tutorials' root folder, type: `cd '.\How to begin programming\00_HelloWorld\'` to change into the correct directory for running the program
-      2. Type "py MyHelloWorld.py" into your terminal.  It should look something like this:
-
-          ```bash
-          $ py MyHelloWorld.py
-          Hello, New Programmer! Welcome to the MinuteBots!
-          ```
+## Run your first Python program.
+1. Type "py MyHelloWorld.py" into your terminal.  It should look something like this:
+```
+$ py MyHelloWorld.py 
+Hello, New Programmer! Welcome to the MinuteBots!
+```
 
 ## Activity A. Modify HelloWorld
+1. Open MyHelloWorld.py, review the file and see if you have some ideas about how it might work.
 
-1. Open MyHelloWorld.py (`mb-tutorials\How to begin programming\00_HelloWorld\MyHelloWorld.py`), review the file and see if you have some ideas about how it might work.
-1. Replace `New Programmer` with your name.
+1. Replace "New Programmer" with your name.
 1. Add some addtional text that is your own. Try adding an additional line.
 1. A comment is a line in code that python ignores. Comments are therefore only for human convenience. You can make a comment by putting this symbol # in front of the line you want to comment.
 

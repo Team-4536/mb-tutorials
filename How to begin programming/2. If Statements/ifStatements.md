@@ -38,6 +38,9 @@ A Logical Operator is a way to combine or make more complex conditional statemen
 
 *not* Returns true if the conditional is false
 
+If you have never used logic statements (and, or, not, etc.) please read through and complete this tutorial:
+https://digisim.io/blog/digital-logic-101-your-first-steps-with-and-or-and-not-gates
+
 **Example of using both Comparison and Logical Operators:**
 ```python
 x = 13
@@ -51,10 +54,10 @@ if (x > 10 and not y > 10):
    print("c")
 ```
 **Output:**
-
+```
 a  
 c  
-
+```
 
 **If-else statements:**  
 An if-else statement is a statement that runs two different pieces of code: one that runs when the if statement is correct, and one that runs when the if statement isn’t correct. The example statement prints whether the amount you’re spending is above the budget.
@@ -178,9 +181,19 @@ match x:
 ```
 Output: d  
 ```
-**Challenge:**  
-Make a guess the number game using input from the console and the random module
 
+**Warm Up:**  
+Can you write a set of if() statements to find the largest of three integer variables?  Try it using the template "2warmup.py"
+
+**Challenge:**  
+Make a guess the number game using input from the console.
+
+**Stretch:**  
+(A stretch activity contains topics we haven't taught yet and you will have to search online or talk to friends to figure out how to complete them.)
+
+Use the random module to create a different number to guess each time.
+
+**Additional Resources**  
 [https\://www\.geeksforgeeks.org/python/python-match-case-statement/](https://www.geeksforgeeks.org/python/python-match-case-statement/)  
 [https\://www\.w3schools.com/python/python\_operators\_logical.asp](https://www.w3schools.com/python/python_operators_logical.asp)  
 [https\://www\.geeksforgeeks.org/python/python-match-case-statement/](https://www.geeksforgeeks.org/python/python-match-case-statement/)  
