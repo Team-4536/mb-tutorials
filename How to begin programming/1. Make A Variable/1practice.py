@@ -1,4 +1,16 @@
-# Before editing this file, make sure that you are in a branch labled as yourName-practice-2026
-# If you are not sure you are in that branch ask for help!
-
-# *If this is your first time, you may need to make this branch*
+X:str=("4536")
+B:str=input("Guess a number:  ")
+if B == X:
+    print("Correct!! You are the Best!")
+else:
+    print("Wrong!! Two guesses left!!")
+    L=input("Guess a number:  ")
+    if L == X:
+        print("Correct!! You are the Best!")
+    else:
+        print("WRONG!!!!!! ONE GUESS LEFT !! !! ! ")
+        C=input("GUEESS A NUMBER ITS YOUR LAST CHANCE !!!!!!!    ")
+        if C == X:
+            input("Nice save! press enter to close.")
+        else:
+            print("WRONG YOU POOPYHEAD!!!!!!!!!")
