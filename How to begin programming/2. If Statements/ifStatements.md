@@ -7,34 +7,29 @@ An if statement is a piece of code designed to check if a specific thing is true
 ![][image1]
 
 **Code Example:**
+```python
+adrianChristianHernandez: int = 10
 
-adrianChristianHernandez \= 10
-
-
-if (adrianChristianHernandez \== 10):  
-print(True)
-
+if (adrianChristianHernandez == 10):  
+  print(True)
+```
 
 **Comparison Operators:**  
 A Comparison Operator is a way to compare two values, these are the ones you will see in python:
 
-== Returns true if they are both equal  
-!= Returns true if they aren't equal 
-
-\> Returns true if the left value is greater than the right value"
-
-< Returns true if the left value is less than the right value
-
-\>= Returns true if the left value is greater than or equal to the right value
-
-\<= Returns true if the left value is less than or equal to the right value
+- `==` Returns true if they are both equal  
+- `!=` Returns true if they aren't equal 
+- `>` Returns true if the left value is greater than the right value"
+- `<` Returns true if the left value is less than the right value
+- `>=` Returns true if the left value is greater than or equal to the right value
+- `<=` Returns true if the left value is less than or equal to the right value
 
 **Logical Operators:**
 A Logical Operator is a way to combine or make more complex conditional statements (if statements)
 
-*and* Returns true if both conditionals are true
+- ***and*** - Returns true if both conditionals are true
 
-*or* Returns true if at least one of the conditionals are true
+- ***or*** - Returns true if at least one of the conditionals are true
 
 *not* Returns true if the conditional is false
 
@@ -43,8 +38,8 @@ https://digisim.io/blog/digital-logic-101-your-first-steps-with-and-or-and-not-g
 
 **Example of using both Comparison and Logical Operators:**
 ```python
-x = 13
-y = 7
+x: int = 13
+y: int = 7
 
 if (x == 13 or y <= 8):     
    print("a")
@@ -63,8 +58,8 @@ c
 An if-else statement is a statement that runs two different pieces of code: one that runs when the if statement is correct, and one that runs when the if statement isn’t correct. The example statement prints whether the amount you’re spending is above the budget.
 
 ```python
-budget = 30
-itemCost = 10
+budget: int = 30
+itemCost: int = 10
 
 if (itemCost < budget):
    print("You can afford ts")
@@ -76,8 +71,8 @@ else:
 Output: You can afford ts
 ```
 ```python
-budget = 30
-itemCost = 36
+budget: int = 30
+itemCost: int = 36
 
 if (itemCost < budget):
    print("You can afford ts")
@@ -91,23 +86,22 @@ Output: Get outta my store brokie
 **If-elif statements:**  
 An if-elif statement is very similar to an if-else statement, but instead of else always running when if is false, the else also checks if something is true before running.
 ```python
-budget = 30
-itemCost = 30
+budget: int = 30
+itemCost: int = 30
 
 if (itemCost < budget):
    print("You can afford ts")
-#elif is short for else if
-elif(itemCost == budget):
+elif(itemCost == budget): #elif is short for else if
    print("Spending all your money on <item> is interesting")
 else:
    print("Get outta my store brokie")
 ```
-```pytho
+```
 Output: Spending all your money on item is interesting
 ```
 You can also make chains of elif statements
 ```python
-time = 6
+time: int = 6
 
 if (time < 6 and time > 0):
    print("You should be asleep rn")
@@ -135,7 +129,7 @@ Output: It is the morning
 
 A match-case statement is essentially a chain of elif statements, but it looks more professional. The main difference is instead of an else statement, there’s case. Here is an example of a match-case statement doing the exact same thing as the elif statements above
 ```python
-time = 6
+time: int = 6
 
 match time:
    case 1 | 2 | 3 | 4 | 5 | 23 | 24:
@@ -160,9 +154,9 @@ Output: It is the morning
 ```
 Another thing you can do is have the case check if something else is true as well:
 ```python
-x = 3
-y = 14
-z = 5
+x: int = 3
+y: int = 14
+z: int = 5
 
 match x:
    case 1 if y < 10:
@@ -183,13 +177,13 @@ Output: d
 ```
 
 **Warm Up:**  
-Can you write a set of if() statements to find the largest of three integer variables?  Try it using the template "2warmup.py"
+Can you write a set of `if()` statements to find the largest of three integer variables?  Try it using the template `2warmup.py`
 
 **Challenge:**  
 Make a guess the number game using input from the console.
 
 **Stretch:**  
-(A stretch activity contains topics we haven't taught yet and you will have to search online or talk to friends to figure out how to complete them.)
+*A stretch activity contains topics we haven't taught yet and you will have to search online or talk to friends to figure out how to complete them.*
 
 Use the random module to create a different number to guess each time.
 
