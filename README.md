@@ -22,6 +22,9 @@ If this is your first time, start here:
 ![alt text](images/image-7.png)
 1. Finally, in the bar at the top that appears, type in "yourName-practice" and then press enter
 ![alt text](images/image-8.png)
+1. Now check-in and publish your branch.  Click the XX icon, select any changed files, commit, create a comment, and publish your branch.
+...Need to add picture here...
+
 1. Now that you are inside your own branch in tutorials, you can selected the first "HelloWorld" tutorial. Then, you can press the the preview view in the top right corner of vs code to see the instructions better!
 ![alt text](image.png)
 
