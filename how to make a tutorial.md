@@ -1,5 +1,11 @@
 # how to make a tutorial
-step by step guide to create a tutorial
+things to include when creating a tutorial: 
+- a Goal: State what this tutorial teaches and what the student should be capable of at the end
+- prerequisites: state what a student must already have completed/ or capable of doing before continuing this tutorial.
+- Explanations, examples, walkthrough
+- practice problems
+
+use this link for formatting: https://markdownlivepreview.com/ 
 
 ### 1. create a new file
 <img width="3787" height="1727" alt="Screenshot 2026-10-27 164911" src="https://github.com/user-attachments/assets/75f61892-c3d6-48d1-be7a-f921f57ce68e" />
