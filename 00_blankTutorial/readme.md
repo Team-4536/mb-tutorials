@@ -1,26 +1,11 @@
-# Your Title Should Go Here
-Describe your tutorial a little here
+# How to Clone a Repository
+Here, you will learn how to clone a repo from Github
 
-## This is a a lower level Heading
-Your tutorial text goes here
-
-### A even lower level headding here
-An even lower level headding. This is *bold* and this is _italics_
-
-You can do numbered lists like this
-1. List item #1
-1. List item #2   
-1. asdf
-
-You can do a bulleted list like this:
-* Item #1
-* Item #2
-* Item #3
-* ...
-
-You can even paste screenshots into github like this:
-
-<img width="122" height="71" alt="image" src="https://github.com/user-attachments/assets/ecbd8fd3-c651-47c0-b697-9c0034284f6b" />
-
-
-
+1. Log in to Github on your computer. You should already know how to do this
+2. Open VS Code
+3. You should be on a tab that says _Welcome_. If you aren't, either press ctr + K, then F, to close all folders, or ctrl + shift + n, to make a new window.
+4. Now, click on the option that says "Clone Git Repository..."
+5. Press "Clone from Github"
+6. Select the folder you want to clone
+7. Put the folder into the repos folder, or the same folder you put your tutorial repo in
+8. Open the Repository
