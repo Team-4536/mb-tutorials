@@ -1,5 +1,5 @@
 # Debugger tutorial 
-
+The debugger Allows you to go through your code and view how it is interperated by the computer
 
 
 <img width="72" height="80" alt="Screenshot 2026-11-12 153914" src="https://github.com/user-attachments/assets/5649c7d2-3743-472d-85e1-516c095be3e4" />
@@ -30,6 +30,8 @@
 # the dot with the arrow pointing up away from it runs the rest of a function and returns to the code that called it.
 # the green arrow that goes in a circle restarts the program.
 # the red square terminates the program at any point you press it.
+
+# to place break points, go to the line that you want to stop at, go to the left hand side of that line, and press to place a dot.
 
 ### Challenge problem: 
 # download debugtutorial.py and run the debugger.
