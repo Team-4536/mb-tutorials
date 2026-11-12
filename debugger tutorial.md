@@ -6,6 +6,8 @@
 
 <img width="715" height="382" alt="Screenshot 2026-11-12 154003" src="https://github.com/user-attachments/assets/654d1b5a-9a8f-49ca-9953-2cdf5fca0373" />
 
+#These red dots are called break points and are there to stop the program while its running in debugger.
+
 <img width="657" height="142" alt="Screenshot 2026-11-12 153924" src="https://github.com/user-attachments/assets/3628a711-efb0-4fcf-abc7-060f4348f250" />
 
 <img width="72" height="80" alt="Screenshot 2026-11-12 153914" src="https://github.com/user-attachments/assets/5649c7d2-3743-472d-85e1-516c095be3e4" />
