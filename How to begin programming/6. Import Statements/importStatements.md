@@ -12,30 +12,30 @@ The keyword `import` lets programs in different files share information. Lets lo
 
 Suppose you have a varible in a file data.py 
 ```py
-fileData: int = 400
+FILE_DATA: int = 400
 ```
 And program in myProgram.py that contains the following code
 ```py
-coolNumber: float = fileData * 5
+coolNumber: float = FILE_DATA * 5
 print(coolNumber)
 ```
 
-As it is, running myProgram.py will result in an error, it does not know what the variable fileData is because it is defined in a different file. Import gives us a way to access the fileData variable.
+As it is, running myProgram.py will result in an error, it does not know what the variable `FILE_DATA` is because it is defined in a different file. Import gives us a way to access the `FILE_DATA` variable.
 
-In myProgram.py, if we include an import statement with the name of the file (without the .py)
+In myProgram.py, if we include an import statement with the name of the file (without the .py), like this:
 ```py
 import data #the name of the file with said variable
 
 # our program below
 ```
-We will have access to the varable `fileData`, but our program still won't work. That's because we need to reference the variable in a special way. Like this:
+Then we will have access to the varable `FILE_DATA`, but our program still won't work. That's because we need to reference the variable in a special way. Like this:
 ```py
 import data
 
-coolNumber: float = data.fileData * 5
+coolNumber: float = data.FILE_DATA * 5
 print(coolNumber)
 ```
-Essentially we tell the program to get the ```fileData``` varible _located_ in the file ```data.py```
+Essentially we tell the program to get the ```FILE_DATA``` varible _located_ in the file ```data.py```
 
 With import statements, programs can access and use varible, but also functions and classes made in different files.
 
@@ -53,7 +53,7 @@ In this example, both a function, `sin()`, and the variable `pi` are from the `m
 
 Most libraries we use for our robot have to be installed externally, but once installed, they are accessed the same way.
 
-## Additional Cool Things
+## Additional Syntax
 There is some more syntax that can be utilized when dealing with `import` that can be useful in certain situations.
 
 ### The "`from`" Keyword
@@ -145,3 +145,4 @@ That's pretty much all there is to it. In this tutorial, you learned:
 * How we can use it to access helpful tools from libraries
 
 ## Practice problems
+Open up the [practiceProgram.py](practiceProgram.py) and follow the instructions

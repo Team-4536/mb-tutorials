@@ -1,7 +1,5 @@
 import data
 
-from math import pi as PI, sin as SIN
-
-coolNumber: float = data.fileData * 5
-print(coolNumber)
+coolNumber: float = data.FILE_DATA * 5
+print(coolNumber) 
 

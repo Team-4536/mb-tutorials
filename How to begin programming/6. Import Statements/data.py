@@ -1,1 +1,1 @@
-fileData: int = 400
+FILE_DATA: int = 400
