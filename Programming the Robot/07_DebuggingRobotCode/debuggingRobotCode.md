@@ -1,13 +1,14 @@
-# 7. Debugging Robot Code
+# 7. Debugging 2027 Robot Code
 The [debugger tutorial](../../debugger%20tutorial.md) showed you breakpoints and stepping through a normal Python file. Robot code is a little different: you don't run `robot.py` directly, you run `robotpy sim`. In this tutorial you will set up VS Code so the debugger can pause robot code while the simulator is running.
 
 ## Goal
-By the end you will be able to press **F5** to start the simulator in the debugger, stop on a breakpoint inside `teleopPeriodic`, look at variables, and debug a test.
+By the end you will be able to press **F5** to start the simulator in the debugger, stop on a breakpoint inside `teleop_periodic`, look at variables, and debug a test.
 
 ## Prerequisites
 * [debugger tutorial](../../debugger%20tutorial.md) (how breakpoints, step over, step into and continue work)
 * [6. Testing Robot Code](../06_TestingRobotCode/testingRobotCode.md)
 * The **Python** extension from Microsoft installed in VS Code (from [Tutorial 1](../01_LaptopSetup/laptopSetup.md))
+* VS Code selected the Python 3.14 interpreter where the team's RobotPy version is installed
 
 ***
 ## Step 1. Make a `launch.json`
@@ -42,7 +43,7 @@ By the end you will be able to press **F5** to start the simulator in the debugg
 }
 ```
 What these settings mean:
-* `"module": "robotpy"` and `"args": ["sim"]` mean "run `py -m robotpy sim`", the same command you've been typing.
+* `"module": "robotpy"` and `"args": ["sim"]` mean "run the RobotPy simulator using the Python interpreter selected in VS Code".
 * `"cwd": "${fileDirname}"` means "run it in the folder of the file I have open right now". **So open `robot.py` (click on its tab) before you press F5.**
 * `"--no-isolation"` makes the tests run inside the debugger. Normally each test runs in its own separate process, and the debugger can't see into those.
 * `"justMyCode": true` means "only stop in our code, not inside WPILib".
@@ -53,7 +54,7 @@ What these settings mean:
 ## Step 2. Set a breakpoint and start debugging
 Use the controller robot from [Tutorial 5](../05_Simulator/simulator.md).
 
-1. Open `robot.py`. Click to the left of the line number on `self.motor.set(speed)` so a **red dot** appears.
+1. Open `robot.py`. Click to the left of the line number on `self.motor.set_throttle(speed)` so a **red dot** appears.
 1. At the top of **Run and Debug**, choose **RobotPy: Simulate** from the dropdown, then press the green play button (or press **F5**).
 1. The simulator opens like normal. Connect Keyboard 0 to Joystick[0] and click **Teleoperated**.
 1. VS Code jumps to the front and highlights the breakpoint line. The robot is paused!
@@ -82,14 +83,11 @@ Now it only stops when the stick is pushed more than halfway.
 1. When it stops, look at `robot` in the Variables panel. You can see exactly what the robot was doing when the test checked it.
 
 ***
-## Using the debugger on team code
-In the sample project, [`RobotCode/robotPeriodicAndInit/src`](../../RobotCode/robotPeriodicAndInit/src):
-1. Open `subsystemManager.py` and put a breakpoint inside `periodic` on the line `s.periodic(ds)`.
-1. Open `robot.py`, choose **RobotPy: Simulate** and press F5. Switch to **Teleoperated**.
-1. Use **Step Into** (F11) to follow the code into each subsystem's `periodic`. Watch the `s` variable change as the loop goes through the subsystems.
+## Historical team example
+The [`RobotCode/robotPeriodicAndInit/src`](../../RobotCode/robotPeriodicAndInit/src) project is pinned to RobotPy 2025 and is not part of this 2027 run path. You can read its `subsystemManager.py` to see how a manager iterates over subsystems, but do not launch or debug it with the 2027 environment.
 
 ***
 ## Challenge
-In the sample project, use **only the debugger** (no `print`s!) to prove which subsystem gets its `periodic` called **twice** every loop. Show a mentor or captain the breakpoint and the Variables panel that proves it.
+In the archived [`subsystemManager.py`](../../RobotCode/robotPeriodicAndInit/src/subsystemManager.py), find which subsystem appears twice in the list. Use the debugger on your 2027 project to inspect a value changing once per periodic loop, then explain why iterating a duplicate subsystem reference would call its method twice.
 
-**Next:** [8. Deploying to the Robot](../08_DeployToRobot/deployToRobot.md)
+**Next:** [8. Deploying to Systemcore](../08.2_DeployToSystemcore/deployToSystemcore.md)

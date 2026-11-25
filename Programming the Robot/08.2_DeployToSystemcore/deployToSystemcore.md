@@ -1,15 +1,15 @@
-# 8.2 Deploying Code to Systemcore (2027 season)
-Starting with the 2027 season, FRC robots use a new robot computer called **Systemcore** instead of the roboRIO. This tutorial is the Systemcore version of [8. Deploying to the Robot](../08_DeployToRobot/deployToRobot.md). It covers getting your code onto a Systemcore and driving with the new **FIRST Driver Station**.
+# 8. Deploying 2027 Code to Systemcore
+Starting with the 2027 season, FRC robots use a new robot computer called **Systemcore** instead of the roboRIO. This is the 2027 deployment path; the [roboRIO tutorial](../08_DeployToRobot/deployToRobot.md) is only for matching 2026-and-earlier projects.
 
 > ⚠️ **Safety first.** A real robot is heavy, fast and can hurt people. **Only do this tutorial with a mentor or captain present.** Before every enable:
 > * The robot is **on blocks** (wheels off the ground), or there is a clear space and a spotter.
 > * Everyone near the robot knows it's about to move. Say **"ENABLING!"** loudly.
 > * **Before you enable, know how to disable and how to E-Stop in the new Driver Station.** Have a mentor show you, because the keys are not the same as the old Driver Station.
 
-> **Mentor note (written November 2026):** Systemcore, the 2027 Driver Station and RobotPy 2027 were all still **alpha/beta** software when this was written (RobotPy `2027.0.0a8`). Names, addresses and steps may change before kickoff. Check each step against the [WPILib 2027 docs](https://docs.wpilib.org/en/latest/) and [SystemcoreTesting](https://github.com/wpilibsuite/SystemcoreTesting) and update this tutorial. Places that most need checking are marked **(check)**.
+> **Mentor note (written November 2026):** Systemcore, the 2027 Driver Station and RobotPy 2027 were still prerelease software when this was written. Names, addresses and steps may change before kickoff. Check each step against the [WPILib 2027 docs](https://docs.wpilib.org/en/latest/) and [SystemcoreTesting](https://github.com/wpilibsuite/SystemcoreTesting), and use the exact RobotPy version pinned by the team. The example `2027.0.0a8` was tested for the command-line tutorials, but is **not** a recommendation to use that version on the team's robot.
 
 ## Goal
-By the end you will be able to update robot code for 2027, deploy it to a Systemcore, and drive it with the FIRST Driver Station.
+By the end you will know what must be ready before a mentor helps you deploy 2027 robot code to a Systemcore and drive it with the FIRST Driver Station.
 
 ## Prerequisites
 * [6. Testing Robot Code](../06_TestingRobotCode/testingRobotCode.md). Deploy runs the tests first!
@@ -32,10 +32,10 @@ By the end you will be able to update robot code for 2027, deploy it to a System
 **The new Driver Station only works with Systemcore, and the old one only works with the roboRIO.** Make sure you use the right one for the robot in front of you.
 
 ***
-## Part 2. ⚠️ Your code has to change for 2027
-RobotPy 2027 renamed a lot of things. **The biggest trap:** if you leave a method with its old name, Python doesn't give an error. WPILib just **never calls it**, so the robot runs but does nothing. (We tested this. An old-style `teleopPeriodic` in a 2027 project never ran.)
+## Part 2. The 2027 API used in these tutorials
+Tutorials 3-7 already use the 2027 API, so you do not need to convert your practice project here. Use the exact RobotPy release pinned by the team. When reading older code, remember that the API changed; an old method name may be accepted by Python but never called by WPILib.
 
-| 2026 (what Tutorials 3-7 show) | 2027 |
+| Older RobotPy code | RobotPy 2027 |
 |---|---|
 | `def robotInit(self):` | `def __init__(self):` and put `super().__init__()` as the **first line** |
 | `teleopInit`, `teleopPeriodic`, `teleopExit` | `teleop_init`, `teleop_periodic`, `teleop_exit` |
@@ -43,18 +43,18 @@ RobotPy 2027 renamed a lot of things. **The biggest trap:** if you leave a metho
 | `disabledInit`, `disabledPeriodic` | `disabled_init`, `disabled_periodic` |
 | `robotPeriodic` | `robot_periodic` |
 | `testInit`, `testPeriodic` | `utility_init`, `utility_periodic` |
-| `controller.getLeftY()`, `getAButton()` | `controller.get_left_y()`, `get_a_button()` |
-| `wpilib.XboxController(0)` | still works, but `wpilib.Gamepad(0)` works with any gamepad |
+| `controller.getLeftY()`, `getAButton()` | `controller.get_left_y()`, `controller.get_face_down_button()` (Xbox A when mapped as a gamepad) |
+| `wpilib.XboxController(0)` | These tutorials use `wpilib.Gamepad(0)` |
 | `wpilib.PWMSparkMax(0)` | `wpilib_drivers.PWMSparkMax(0)` (need `import wpilib_drivers`) |
 | `motor.set(speed)` / `motor.get()` | `motor.set_throttle(speed)` / `motor.get_throttle()` |
-| `wpilib.SmartDashboard.putNumber("Name", x)` | `telemetry.log("Name", x)` (need `import telemetry`) |
+| `wpilib.SmartDashboard.putNumber("Name", x)` | Publish a NetworkTables topic with `ntcore`, as in [Tutorial 5](../05_Simulator/simulator.md) |
 | `from pyfrc.tests import *` in `tests/` | `from wpilib.testing.robot_tests import *` |
 
-The general rule: **method names went from `camelCase` to `snake_case`.** If something gives an `AttributeError`, try the snake_case name.
+The general rule: **many method names went from `camelCase` to `snake_case`.** RobotPy 2027's `telemetry.log(...)` is a separate telemetry/logging API; it is not the NetworkTables example used in Tutorial 5.
 
-Here's the controller robot from [Tutorial 5](../05_Simulator/simulator.md), updated for 2027:
+This is the style used for a 2027 robot:
 ```python
-import telemetry
+import ntcore
 import wpilib
 import wpilib_drivers
 
@@ -64,25 +64,24 @@ class MyRobot(wpilib.TimedRobot):
         super().__init__()
         self.controller = wpilib.Gamepad(0)
         self.motor = wpilib_drivers.PWMSparkMax(0)
+        table = ntcore.NetworkTableInstance.get_default().get_table("Tutorial")
+        self.speed_publisher = table.get_double_topic("Motor Speed").publish()
 
     def teleop_periodic(self) -> None:
         speed = -self.controller.get_left_y()
         self.motor.set_throttle(speed)
-        telemetry.log("Motor Speed", speed)
+        self.speed_publisher.set(speed)
 ```
-> On Systemcore, the PWM port number means one of its reconfigurable **SmartIO** ports.
+> On Systemcore, the PWM port number means one of its reconfigurable **SmartIO** ports. The practice code uses a simulated PWM device; it is not a wiring plan for the real robot.
 
 ### Update `pyproject.toml`
-1. Change `robotpy_version` to the team's 2027 version (ask a mentor). For example:
+1. Change `robotpy_version` only if needed so it exactly matches the team's approved 2027 version. This is an example of a prerelease pin, not a team recommendation:
 ```toml
 robotpy_version = "2027.0.0a8"
 ```
-2. Motor and sensor libraries from vendors (REV, CTRE) are **not** in `components` anymore. Put them in `requires` instead. **(check: these were the 2027 package names in November 2026)**
-```toml
-requires = ["robotpy-rev", "phoenix6"]
-```
-3. Run `py -m robotpy sync` (with internet).
-4. Run `py -m robotpy test` and the simulator, and fix everything until they pass.
+2. Vendor libraries may be configured differently than in older RobotPy projects. Ask a mentor for the exact vendor package names and configuration for this robot; do not copy old `components` or `requires` entries without checking.
+3. Run `py -3.14 -m robotpy sync` (with internet).
+4. Run `py -3.14 -m robotpy test` and the simulator, and fix everything until they pass.
 
 ***
 ## Part 3. Install the FIRST Driver Station
@@ -110,17 +109,17 @@ Open a web browser and go to **http://robot.local**. You should see the **System
 
 ***
 ## Part 5. Deploy
-Same as the roboRIO, just make sure you're on the 2027 project.
+Use a project whose `pyproject.toml` pins the team's approved 2027 RobotPy version.
 
 1. **With internet**, in the folder with `robot.py`:
 ```
-py -m robotpy sync
-py -m robotpy test
+py -3.14 -m robotpy sync
+py -3.14 -m robotpy test
 ```
 2. Connect to the Systemcore (Part 4).
 3. Deploy:
 ```
-py -m robotpy deploy
+py -3.14 -m robotpy deploy
 ```
 * The first time, it asks `Team number or robot hostname:`. Type `4536`. It looks for the robot at `10.45.36.2`, `robot.local`, and Systemcore's USB and Wi‑Fi addresses, then uses whichever answers.
 * It runs the tests. If they fail, it does **not** deploy.
@@ -129,22 +128,28 @@ py -m robotpy deploy
 
 > ⚠️ **Never turn the robot off while a deploy is running.** That can corrupt Systemcore's storage, and then a mentor has to re-image it.
 
-> **Why would it say "roboRIO"?** If any message mentions a roboRIO, you're using RobotPy 2026. Check `robotpy_version` in `pyproject.toml` and run `py -m robotpy sync`.
+> **Why would it say "roboRIO"?** If any message mentions a roboRIO, check that `robotpy_version` in `pyproject.toml` is the team's 2027 Systemcore version, then run `py -3.14 -m robotpy sync`.
 
 ***
-## Part 6. Drive with the FIRST Driver Station
+## Part 6. Drive and view data
 1. Plug in your controller **before** you open the Driver Station if you can. It can send up to 6 controllers to the robot. Make sure yours is in slot **0**.
 1. Check that the Driver Station shows it is connected to the robot and that **robot code** is running.
 1. Choose **Teleoperated**.
 1. Say **"ENABLING!"** and enable. Drive carefully.
 1. Disable when you're done.
 
-**E-Stop:** if the E-Stop is used, the robot locks out. To reset it, hold **Escape** and **I** together for 1 second **(check: this may change)**.
+**E-Stop:** if it is used, stop and ask your mentor to confirm the current reset procedure. Do not attempt to reset it without their direction.
+
+### Where to see robot data
+The FIRST Driver Station shows robot connection, mode and controller status. It is **not** a general NetworkTables viewer.
+
+* In simulation, use the simulator's **NetworkTables** window and find the `/Tutorial` table from Tutorial 5.
+* On the real robot, use **Glass** (or the NetworkTables dashboard the team uses) to connect to the robot and view topics. Follow the [WPILib Glass connection guide](https://docs.wpilib.org/en/latest/docs/software/dashboards/glass/networktables-connection.html) or ask a mentor to configure it.
+* `telemetry.log(...)` is a different 2027 logging API. If team code uses it, view those logs in the team's configured tool, such as AdvantageScope or Elastic.
 
 ### Seeing what the robot prints
 * The Driver Station has a log window that shows `print()` messages and errors from the robot.
-* Or deploy with `py -m robotpy deploy --nc` to see the robot's output in the VS Code terminal. This only works while the Driver Station is connected.
-* Values you send with `telemetry.log(...)` can be viewed in **AdvantageScope** or **Elastic**. Mentors can install those from the Systemcore dashboard.
+* Or deploy with `py -3.14 -m robotpy deploy --nc` to see the robot's output in the VS Code terminal. This only works while the Driver Station is connected.
 
 ***
 ## Common problems
@@ -153,16 +158,16 @@ py -m robotpy deploy
 | `Could not find team 4536 robot` | Is Systemcore powered and booted? Are you on its Wi‑Fi or USB-C, not the school Wi‑Fi? Does http://robot.local load? |
 | Robot code runs but **nothing happens** in teleop | You still have 2026 names like `teleopPeriodic`. Rename them to snake_case (Part 2). |
 | `AttributeError: ... has no attribute 'set'` (or `getLeftY`, etc.) | It's a 2026 name. Use the 2027 name from the Part 2 table. |
-| `ModuleNotFoundError: No module named 'pyfrc'` | Your `tests/` file is from 2026. Change it to `from wpilib.testing.robot_tests import *`. |
-| `ModuleNotFoundError` for `rev`, `phoenix6`, etc. | Add the vendor package to `requires` in `pyproject.toml` and run `py -m robotpy sync`. |
+| `ModuleNotFoundError: No module named 'pyfrc'` | Your test file is from an older project. For a new 2027 project, use `py -3.14 -m robotpy add-tests` and the generated `tests/robot_test.py`. |
+| `ModuleNotFoundError` for a vendor package | Ask a mentor for the correct package and add it to `pyproject.toml`, then run `py -3.14 -m robotpy sync`. |
 | The Driver Station can't see the robot | Make sure you are using the **FIRST** Driver Station, not the old NI FRC Driver Station, and that the team number is 4536. |
 
 ***
 ## Challenge
 With a mentor or captain watching:
-1. Convert your controller robot from [Tutorial 5](../05_Simulator/simulator.md) to 2027 (Part 2), including the challenge parts (second motor, A button for half speed, A-button value with `telemetry.log`).
-1. Update its tests so `py -m robotpy test` passes.
+1. Deploy the 2027 controller robot from [Tutorial 5](../05_Simulator/simulator.md), including the second motor and A-button challenge, with a mentor present.
+1. Run its tests so `py -3.14 -m robotpy test` passes before deployment.
 1. Deploy it to the Systemcore, enable in teleop and drive.
-1. Run `py -m robotpy deploy-info` and show that **your branch** is the one on the robot.
+1. Run `py -3.14 -m robotpy deploy-info` and show that **your branch** is the one on the robot.
 
-🎉 **You're ready for the 2027 robot!**
+🎉 **You are ready to start learning autonomous code and planning supervised hardware tests.**

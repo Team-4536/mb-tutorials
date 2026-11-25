@@ -1,4 +1,4 @@
-# 6. Testing Robot Code
+# 6. Testing 2027 Robot Code
 A **test** is code that checks your other code automatically. RobotPy can start your robot, run it through autonomous and teleop super fast (no waiting for real time) and tell you if it crashed. **`robotpy deploy` runs the tests before it puts code on the robot, and it won't deploy if a test fails.** That's why you need to know this before Tutorial 8.
 
 ## Goal
@@ -11,38 +11,30 @@ By the end you will be able to run the built-in robot tests, read the results, a
 ## Step 1. Add the built-in tests
 In your `yourName_robot` folder:
 ```
-py -m robotpy add-tests
+py -3.14 -m robotpy add-tests
 ```
-This creates `tests/pyfrc_test.py`. It's only one line:
+For RobotPy 2027, this creates `tests/robot_test.py`. It imports the basic tests supplied by WPILib:
 ```python
-from pyfrc.tests import *
+from wpilib.testing.robot_tests import *
 ```
-That line brings in 4 ready-made tests that work for just about any robot:
-
-| Test | What it checks |
-|------|----------------|
-| `test_disabled` | The robot starts up and runs while disabled without crashing |
-| `test_autonomous` | It runs a whole autonomous period without crashing |
-| `test_operator_control` | It runs teleop without crashing |
-| `test_practice` | It runs a full practice match (disabled, auto, disabled, teleop) without crashing |
+These tests exercise common robot modes and check that the robot code starts and runs without crashing. The exact test names and number may vary with the pinned RobotPy release.
 
 ## Step 2. Run the tests
 ```
-py -m robotpy test
+py -3.14 -m robotpy test
 ```
-When everything works, the end of the output looks like this:
+When everything works, the end of the output has a pytest summary with no failures. A test may be marked **skipped** by the framework:
 ```
-tests/pyfrc_test.py ....                                                 [100%]
-============================== 4 passed in 1.17s ===============================
+============================== 4 passed, 1 skipped ==============================
 ```
-Each `.` is a test that passed. A failed test shows an **F**, along with a long report about what went wrong. Like any traceback, read it from the bottom up.
+Each `.` is a test that passed. A failed test shows an **F**, along with a report about what went wrong. Like any traceback, read it from the bottom up.
 
-> Another way to get these tests without making a `tests` folder is `py -m robotpy test --builtin`.
+> For the tested RobotPy `2027.0.0a8` prerelease, the generated tests produced 4 passes and 1 skip. Your mentor-pinned release may report a different count.
 
 ## Step 3. Break it on purpose
-1. In `teleopPeriodic`, add a line that will crash, like `print(10 / 0)`.
-1. Run `py -m robotpy test` again. Which tests fail? Find `ZeroDivisionError` and the line number in the output.
-1. Remove the bad line and make sure all 4 pass again.
+1. In `teleop_periodic`, add a line that will crash, like `print(10 / 0)`.
+1. Run `py -3.14 -m robotpy test` again. Which tests fail? Find `ZeroDivisionError` and the line number in the output.
+1. Remove the bad line and make sure all runnable tests pass again.
 
 ***
 ## Step 4. Write your own test
@@ -63,18 +55,26 @@ What it does:
 * `control.step_timing(...)` runs the robot for 2 seconds of **pretend** time in teleop, enabled. (It takes way less than 2 real seconds.)
 * `assert` means "this had better be true, or the test fails".
 
-Run `py -m robotpy test` and look for `tests/teleop_test.py .`
+Run `py -3.14 -m robotpy test` and confirm the new test passes.
 
 ***
-## Team code: `conftest.py`
-Open [`RobotCode/robotPeriodicAndInit/src/conftest.py`](../../RobotCode/robotPeriodicAndInit/src/conftest.py). `conftest.py` is a special pytest file that sets up tests. Ours tells the test system which robot class to use (`Robot` from `robot.py`). You usually don't need to change it.
+## Historical team example
+[`RobotCode/robotPeriodicAndInit/src/conftest.py`](../../RobotCode/robotPeriodicAndInit/src/conftest.py) belongs to the archived RobotPy 2025 project and imports `pyfrc`. Do not run that project with the 2027 tutorial setup. A current 2027 team project may have its own `conftest.py`; follow that project's instructions.
 
 ***
 ## Challenge
 Use the controller robot from [Tutorial 5](../05_Simulator/simulator.md) for this one.
 
-1. Make sure `py -m robotpy test` passes for it.
-1. Write a test that checks the motor is **stopped** (`robot.motor.get() == 0`) after running for 1 second with `enabled=False`.
-1. **Bonus:** in the sample project (`RobotCode/robotPeriodicAndInit/src`), run `py -m robotpy test --builtin`. Does it finish? If it seems stuck, think about what `sleep(1)` does when the tests run thousands of loops. (Press **CTRL-C** to stop it.)
+1. Make sure `py -3.14 -m robotpy test` passes for it.
+1. Write a test that checks the motor command is **zero** after the robot is disabled. Use the 2027 motor API (`get_throttle()`), and make sure your test first sets it to a nonzero value:
+   ```python
+   def test_motor_stops_when_disabled(control, robot):
+       with control.run_robot():
+           robot.motor.set_throttle(0.5)
+           control.step_timing(seconds=1, autonomous=False, enabled=False)
+           assert robot.motor.get_throttle() == 0
+   ```
+   This passes because the Tutorial 5 robot explicitly sets the motor to zero in `disabled_init`. WPILib blocks hardware output while disabled, but a motor controller's getter can still report its last commanded setpoint unless your code clears it.
+1. Explain why the archived example's `sleep(1)` in a periodic method makes it unsuitable for fast automated tests. Do not run the archived 2025 project as part of this 2027 workflow.
 
 **Next:** [7. Debugging Robot Code](../07_DebuggingRobotCode/debuggingRobotCode.md)
