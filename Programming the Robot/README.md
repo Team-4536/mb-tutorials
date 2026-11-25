@@ -18,7 +18,8 @@ You should have finished the **How to begin programming** tutorials first (at le
 | 5 | [Running the Simulator](05_Simulator/simulator.md) | Run robot code on your laptop without a robot, and drive it with a controller or keyboard |
 | 6 | [Testing Robot Code](06_TestingRobotCode/testingRobotCode.md) | Run automatic tests and write your own |
 | 7 | [Debugging Robot Code](07_DebuggingRobotCode/debuggingRobotCode.md) | Pause robot code with breakpoints while the simulator is running |
-| 8 | [Deploying to the Robot](08_DeployToRobot/deployToRobot.md) | Put your code on the real robot and drive it |
+| 8 | [Deploying to the Robot (roboRIO)](08_DeployToRobot/deployToRobot.md) | Put your code on the real robot and drive it |
+| 8.2 | [Deploying to Systemcore (2027)](08.2_DeployToSystemcore/deployToSystemcore.md) | Update code for 2027, deploy to the new Systemcore controller, and drive with the FIRST Driver Station |
 
 ## Quick command cheat sheet
 Run these in the VS Code terminal, **inside the folder that has `robot.py` in it**.
@@ -32,5 +33,7 @@ On Windows we type `py -m robotpy`. On Mac/Linux type `python3 -m robotpy` inste
 | `py -m robotpy sim` | Runs your code in the simulator | No | No |
 | `py -m robotpy test` | Runs automatic tests on your code | No | No |
 | `py -m robotpy deploy` | Tests your code, then copies it to the robot and starts it | No | **Yes** |
+
+> **2027 / Systemcore:** Tutorials 3-7 use RobotPy 2026 names like `teleopPeriodic`. RobotPy 2027 renamed them (for example to `teleop_periodic`). See [8.2, Part 2](08.2_DeployToSystemcore/deployToSystemcore.md) for the full list.
 
 Stuck? Ask an experienced programming team member, a captain or a mentor. Everyone got stuck on this stuff the first time.

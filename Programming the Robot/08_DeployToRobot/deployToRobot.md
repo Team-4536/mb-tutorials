@@ -6,7 +6,7 @@
 > * Everyone near the robot knows it's about to move. Say **"ENABLING!"** loudly.
 > * Your hand is ready to disable: **Enter** disables the robot, **Space bar** is the emergency stop. (After an emergency stop, the robot has to be rebooted.)
 
-> **Mentor note:** this tutorial is written for the **roboRIO** control system with RobotPy 2026. If the team moves to FRC's new **Systemcore** controller, the connection and deploy steps will be different and this tutorial needs to be updated.
+> **Using a Systemcore (2027)?** This tutorial is for the **roboRIO** with RobotPy 2026. For Systemcore, use [8.2 Deploying to Systemcore](../08.2_DeployToSystemcore/deployToSystemcore.md) instead.
 
 ## Goal
 By the end you will have deployed code to the robot, enabled it from the Driver Station, driven it, and seen its printed messages.
