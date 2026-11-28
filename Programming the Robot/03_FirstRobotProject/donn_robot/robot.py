@@ -5,12 +5,18 @@ class MyRobot(wpilib.TimedRobot):
     def __init__(self) -> None:
         super().__init__()
         self.timer = wpilib.Timer()
-        table = ntcore.NetworkTableInstance.get_default().get_table("Tutorial")
-        self.teleop_seconds = table.get_double_topic("Teleop Seconds").publish()
+        table = ntcore.NetworkTableInstance.getDefault().getTable("Tutorial")
+        self.teleop_seconds = table.getDoubleTopic("Teleop Seconds").publish()
+        self.teleop_operator = table.getStringTopic("Teleop Operator").publish()
 
-    def teleop_init(self) -> None:
-        print("Teleop started")
+    def teleopInit(self) -> None:
+        self.teleop_operator.set("Coach Donn")
+        print("Teleop started by Coach Donn")
         self.timer.restart()
 
-    def teleop_periodic(self) -> None:
+    def teleopPeriodic(self) -> None:
         self.teleop_seconds.set(self.timer.get())
+        
+    def teleopExit(self) -> None:
+        self.teleop_operator.set("N/A")
+        print("Teleop ended by Coach Donn")
