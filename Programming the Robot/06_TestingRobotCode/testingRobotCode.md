@@ -1,4 +1,4 @@
-# 6. Testing 2027 Robot Code
+# 6. Testing 2026 Robot Code
 A **test** is code that checks your other code automatically. RobotPy can start your robot, run it through autonomous and teleop super fast (no waiting for real time) and tell you if it crashed. **`robotpy deploy` runs the tests before it puts code on the robot, and it won't deploy if a test fails.** That's why you need to know this before Tutorial 8.
 
 ## Goal
@@ -9,11 +9,11 @@ By the end you will be able to run the built-in robot tests, read the results, a
 
 ***
 ## Step 1. Add the built-in tests
-In your `yourName_robot` folder:
+In your `UserChallenges/yourName/` folder:
 ```
 py -3.14 -m robotpy add-tests
 ```
-For RobotPy 2027, this creates `tests/robot_test.py`. It imports the basic tests supplied by WPILib:
+For RobotPy 2026, this creates `tests/robot_test.py`. It imports the basic tests supplied by WPILib:
 ```python
 from wpilib.testing.robot_tests import *
 ```
@@ -29,7 +29,7 @@ When everything works, the end of the output has a pytest summary with no failur
 ```
 Each `.` is a test that passed. A failed test shows an **F**, along with a report about what went wrong. Like any traceback, read it from the bottom up.
 
-> For the tested RobotPy `2027.0.0a8` prerelease, the generated tests produced 4 passes and 1 skip. Your mentor-pinned release may report a different count.
+> For the tested RobotPy `2026.2.2` release, the generated tests produced 4 passes and 1 skip. Your mentor-pinned release may report a different count.
 
 ## Step 3. Break it on purpose
 1. In `teleop_periodic`, add a line that will crash, like `print(10 / 0)`.
@@ -59,7 +59,7 @@ Run `py -3.14 -m robotpy test` and confirm the new test passes.
 
 ***
 ## Historical team example
-[`RobotCode/robotPeriodicAndInit/src/conftest.py`](../../RobotCode/robotPeriodicAndInit/src/conftest.py) belongs to the archived RobotPy 2025 project and imports `pyfrc`. Do not run that project with the 2027 tutorial setup. A current 2027 team project may have its own `conftest.py`; follow that project's instructions.
+[`RobotCode/robotPeriodicAndInit/src/conftest.py`](../../RobotCode/robotPeriodicAndInit/src/conftest.py) belongs to the archived RobotPy 2026 project and imports `pyfrc`. Do not run that project with the 2026 tutorial setup. A current 2026 team project may have its own `conftest.py`; follow that project's instructions.
 
 ***
 ## Challenge
@@ -75,6 +75,6 @@ Use the controller robot from [Tutorial 5](../05_Simulator/simulator.md) for thi
            assert robot.motor.get_throttle() == 0
    ```
    This passes because the Tutorial 5 robot explicitly sets the motor to zero in `disabled_init`. WPILib blocks hardware output while disabled, but a motor controller's getter can still report its last commanded setpoint unless your code clears it.
-1. Explain why the archived example's `sleep(1)` in a periodic method makes it unsuitable for fast automated tests. Do not run the archived 2025 project as part of this 2027 workflow.
+1. Explain why the archived example's `sleep(1)` in a periodic method makes it unsuitable for fast automated tests. Do not run the archived 2026 project as part of this 2026 workflow.
 
 **Next:** [7. Debugging Robot Code](../07_DebuggingRobotCode/debuggingRobotCode.md)

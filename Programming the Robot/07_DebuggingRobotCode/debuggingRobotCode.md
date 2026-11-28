@@ -1,4 +1,4 @@
-# 7. Debugging 2027 Robot Code
+# 7. Debugging 2026 Robot Code
 The [debugger tutorial](../../debugger%20tutorial.md) showed you breakpoints and stepping through a normal Python file. Robot code is a little different: you don't run `robot.py` directly, you run `robotpy sim`. In this tutorial you will set up VS Code so the debugger can pause robot code while the simulator is running.
 
 ## Goal
@@ -84,10 +84,10 @@ Now it only stops when the stick is pushed more than halfway.
 
 ***
 ## Historical team example
-The [`RobotCode/robotPeriodicAndInit/src`](../../RobotCode/robotPeriodicAndInit/src) project is pinned to RobotPy 2025 and is not part of this 2027 run path. You can read its `subsystemManager.py` to see how a manager iterates over subsystems, but do not launch or debug it with the 2027 environment.
+The [`RobotCode/robotPeriodicAndInit/src`](../../RobotCode/robotPeriodicAndInit/src) project is pinned to RobotPy 2026 and is not part of this 2026 run path. You can read its `subsystemManager.py` to see how a manager iterates over subsystems, but do not launch or debug it with the 2026 environment.
 
 ***
 ## Challenge
-In the archived [`subsystemManager.py`](../../RobotCode/robotPeriodicAndInit/src/subsystemManager.py), find which subsystem appears twice in the list. Use the debugger on your 2027 project to inspect a value changing once per periodic loop, then explain why iterating a duplicate subsystem reference would call its method twice.
+In the archived [`subsystemManager.py`](../../RobotCode/robotPeriodicAndInit/src/subsystemManager.py), find which subsystem appears twice in the list. Use the debugger on your 2026 project to inspect a value changing once per periodic loop, then explain why iterating a duplicate subsystem reference would call its method twice.
 
 **Next:** [8. Deploying to Systemcore](../08.2_DeployToSystemcore/deployToSystemcore.md)

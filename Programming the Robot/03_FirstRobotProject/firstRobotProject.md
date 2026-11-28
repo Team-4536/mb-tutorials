@@ -23,18 +23,18 @@ for.
 
 ## Step 1. Make a folder for your project
 
-1. In VS Code, in the **Explorer** (top icon on the left), make a new
-   folder inside `Programming the Robot/03_FirstRobotProject/` named
-   `yourName_robot`.
-1. Open a terminal (**Terminal --> New Terminal**) and move into that
+1. In VS Code, in the **Explorer** (top icon on the left), make sure the
+   `UserChallenges` folder exists. If not, create it in the repository root.
+2. Inside `UserChallenges`, create a new folder named after yourself (for example,
+   `donn`).
+3. Open a terminal (**Terminal --> New Terminal**) and move into that
    folder with `cd`:
 
    ```powershell
-   cd "Programming the Robot/03_FirstRobotProject/yourName_robot"
+   cd UserChallenges/donn
    ```
 
-> **Tip:** type `cd "Prog` and press **TAB**. The terminal fills in the
-> rest of the name for you.
+   (Replace `donn` with your name.)
 > **The #1 mistake:** robot commands only work when your terminal is
 > **inside the folder that has `robot.py`**. If a command says it can't
 > find `robot.py`, check where you are with `pwd` and use `cd` to get to

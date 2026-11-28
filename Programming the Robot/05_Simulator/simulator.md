@@ -1,4 +1,4 @@
-# 5. Running the 2027 Simulator
+# 5. Running the 2026 Simulator
 You can't always have the robot, and even when you do, testing brand new code on it is risky. The **simulator** runs your robot code on your laptop and pretends to be the robot and the Driver Station.
 
 ## Goal
@@ -10,7 +10,7 @@ By the end you will be able to start the simulator, change the robot's mode, dri
 
 ***
 ## Step 1. Code that uses a controller
-In your `yourName_robot` folder, replace `robot.py` with:
+In your `UserChallenges/yourName/` folder, replace `robot.py` with:
 ```python
 import ntcore
 import wpilib
@@ -37,7 +37,7 @@ class MyRobot(wpilib.TimedRobot):
 * `PWMSparkMax(0)` is a motor controller plugged into **PWM/SmartIO port 0** on the Systemcore. (A simulated PWM motor is the easiest way to see the value change.)
 * `motor.set_throttle()` takes a number from **-1.0** (full backward) to **1.0** (full forward).
 * **Why the minus sign?** On a controller, pushing the stick **up** gives a **negative** Y value. We flip it so up = forward.
-* The publisher writes the number to the `Tutorial/Motor Speed` NetworkTables topic. RobotPy 2027 uses `ntcore` for this direct NetworkTables example.
+* The publisher writes the number to the `Tutorial/Motor Speed` NetworkTables topic. RobotPy 2026 uses `ntcore` for this direct NetworkTables example.
 
 ## Step 2. Start the simulator
 In the terminal, inside the folder with `robot.py`:
